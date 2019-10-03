@@ -1,0 +1,51 @@
+<app-header [count]="totalItems"></app-header>
+<app-sidebar [count]="totalItems" [show]="showMenu"></app-sidebar>
+<div class="container">
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>enter city name:</mat-label>
+            <input matInput [(ngModel)]="cityName" placeholder="city name" (keyup)="search()">
+        </mat-form-field>
+        <br>
+        <br>
+        <mat-form-field>
+            <mat-select placeholder="Select">
+                <mat-option *ngFor="let city of cities" value="city.woeid" (click)="showWeather(city.woeid)">{{city.title}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div *ngIf="mycity != null" style="border: 1px solid black">
+        <span>title: {{mycity.title}}</span><br>
+        <span>sun rise: {{mycity.sun_rise}}</span><br>
+        <span>sun set: {{mycity.sun_set}}</span><br>
+        <span>parent: {{mycity.parent.title}}</span><br>
+
+    </div>
+
+
+    <!-- <br><br><hr>
+    <div>
+        <mat-card *ngFor="let city of cities">
+                    <mat-card-header>
+                      <mat-card-title>{{city.title}}</mat-card-title>
+                      <mat-card-subtitle>{{city.parent.title}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                      <p>
+                            <span>title: {{city.title}}</span><br>
+                            <span>sun rise: {{city.sun_rise}}</span><br>
+                      </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <button mat-button>btn</button>
+                      <button mat-button>see detail</button>
+                    </mat-card-actions>
+                  </mat-card>
+    </div> -->
+    <!-- <button (click)="toggleMenu()">clickme</button> -->
+</div>
+
+<app-footer [count]="totalItems" (navToggle)="sidenav.toggle()"></app-footer>
+
+

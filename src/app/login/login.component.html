@@ -1,0 +1,54 @@
+<div class="example-container">
+
+    <!-- <button (click)="test()">clickme</button> -->
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="loginForm">
+
+    <mat-form-field class="example-full-width">
+      <mat-label>mobile number:</mat-label>
+      <input matInput placeholder="mobile" formControlName="mobileNum" />
+      <mat-hint>09120450115</mat-hint>
+      <!-- <mat-error *ngIf="errorHandling('mobileNum', 'required')">
+            You must provide a<strong>name</strong>
+         </mat-error> -->
+      <mat-error *ngIf="loginForm.controls.mobileNum.errors">
+        <p>Your mobile number is required</p>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>password:</mat-label>
+      <input matInput placeholder="password"  [type]="password" formControlName="password" >
+      <mat-hint>123</mat-hint>
+      <mat-error *ngIf="loginForm.controls.password.errors">
+        <p>Your password is required</p>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-error *ngIf="responseResult">
+      <p>{{responseResult}}</p>
+    </mat-error>
+    <br>
+    <div class="button-wrapper">
+      <button mat-flat-button color="primary" type="submit">login</button>
+    </div>
+  
+
+         <!-- <label>
+      Name:
+      <input type="text" formControlName="mobileNum">
+      <div *ngIf="submitted && loginForm.controls.mobileNum.errors">
+        <div *ngIf="loginForm.controls.mobileNum.errors.required">Your mobile number is required</div>
+      </div>
+    </label> -->
+    <!-- <label>
+      Message:
+      <textarea formControlName="password"></textarea>
+      <div *ngIf="submitted && loginForm.controls.password.errors" class="error">
+        <div *ngIf="loginForm.controls.password.errors.required">your password is required</div>
+      </div>
+    </label> -->
+    <!-- <input type="submit" value="login"> -->
+  
+  </form>
+</div>
+
